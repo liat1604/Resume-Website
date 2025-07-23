@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <button id="darkModeToggle">🌙 Toggle Theme</button>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Cecilia Theunissen</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='./styles/main.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     
@@ -13,6 +15,7 @@
 
         <section id="wrapper--hero" class="section--page">
             <img id="profile-pic" src="./assets/images/LiaPhoto.jpg"/>
+           
             
             <div>
                 <h1 id="username" >Cecilia Theunissen</h1>
@@ -41,21 +44,30 @@
                 </p>
         </section>
 
-        <section class="section--page">
+        <section class="section--page"> 
             <h2>Socials</h2>
-           <div id="socials--list">
-               <a href="https://x.com/CtLiat1604" target="_blank">X</a>
-                    <a href="https://www.linkedin.com/in/lia-theunissen-982861209" target="_blank">LinkedIn</a>
-                    <a href="https://github.com/liat1604" target="_blank">Github</a>
-                    <a href="./assets/Cecilia CV Resume.pdf" target="_blank">Download Resume</a>
-           </div> 
+            <div id="socials--list">
+                <a href="https://www.linkedin.com/in/lia-theunissen-982861209" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/liat1604" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://x.com/CtLiat1604" target="_blank">
+                    <i class="fab fa-x-twitter"></i> X (Twitter)
+                </a>
+                <a href="./assets/Cecilia CV Resume.pdf" target="_blank">
+                    <i class="fas fa-file-download"></i> Download Resume
+                </a>
+            </div> 
         </section>
 
         <section class="section--page">
             <h2>Tech Stack</h2>
             <div id="wrapper--techstack_items">
             <div class="card--techstack"><span> Python, Java, C#, C++ </span></div>
-            <div class="card--techstack"><span> mySQL, Oracle </span></div>
+            <div class="card--techstack"><span> mySQL, Oracle, MicrosoftSQL </span></div>
+            <div class="card--techstack"><span> html,CSS </span></div>
             </div>
         </section>
 
@@ -75,12 +87,18 @@
                 <li> Learn Ethical Hacking From Scratch - Udemy</li>
                 <li>Packet tracer software - Cisco</li>
             </ul>
+            <h2>Projects</h2>
+            <ul id="certification--list">
+                <li><a href="https://github.com/Caspers-Shadow/CMPG-315" target="_blank">Packet tracer software for office</a></li>
+            </ul>
         </section>
 
         <section class="section--page">
             <h2>Hobbies</h2>
             <ul id="certification--list">
-            <p>I enjoy reaing, coding side projects, and coloring.</p>
+            <li>Reading</li>
+            <li>Coding side projects</li>
+            <li>Coloring</li>
             </ul>
         </section>
 
@@ -96,11 +114,37 @@
                 </ul>
             </div>
         </section>
-
-
-
-
     </div>
+    
+     <script>
+    const toggleButton = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    // Check system preference
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // Apply stored theme or fallback to system preference
+    const storedTheme = localStorage.getItem('theme');
+    const initialTheme = storedTheme ? storedTheme : (systemPrefersDark ? 'dark' : 'light');
+    body.setAttribute('data-theme', initialTheme);
+
+    // Toggle theme and save preference
+    toggleButton.addEventListener('click', () => {
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      const userSet = localStorage.getItem('theme');
+      if (!userSet) {
+        const newSystemTheme = e.matches ? 'dark' : 'light';
+        body.setAttribute('data-theme', newSystemTheme);
+      }
+    });
+  </script>
 
 </body>
 </html>

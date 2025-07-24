@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap');
 
 :root{
-   --mainTextColor-light:#2d2d2d;
-    --secondaryTextColor-light:#6e6e6e;
-    --mainLinkColor-light:#a259ff;
-    --mainBorderColor-light:#d1c4e9;
-    --mainButtonColor-light:#b796f5;
-    --mainBgColor-light:#f2f2f5;
+   --mainTextColor-light: #2d2d2d;
+    --secondaryTextColor-light: #6e6e6e;
+    --mainLinkColor-light: #9c2148; /* NEW accent color */
+    --mainBorderColor-light: #d7a1b1; /* soft border */
+    --mainButtonColor-light: #eab1c0; /* light pinkish */
+    --mainBgColor-light: #fcd4e0a0; /* pale background */
 
     --mainTextColor-dark: #ffffff;
     --secondaryTextColor-dark: #cccccc;
-    --mainLinkColor-dark: #b78cff;
-    --mainBorderColor-dark: #7453c1;
-    --mainButtonColor-dark:#b796f5;
-    --mainBgColor-dark: #1e1e2f;
+    --mainLinkColor-dark: #ff8fa8; /* lighter version of main color */
+    --mainBorderColor-dark: #ab4760;
+    --mainButtonColor-dark: #9c2148;
+    --mainBgColor-dark: #42081c;
   
     --mainTextColor:var(--mainTextColor-light);
     --secondaryTextColor:var(--secondaryTextColor-light);
@@ -117,24 +117,28 @@ li{
     background-color: var(--mainButtonColor);
     border: 2px solid var(--mainLinkColor); 
     border-radius: 8px;
-    color: #a259ff; 
+    color: #e66890; 
     font-size: 1.2rem;
     text-decoration: none;
     transition: all 0.3s ease;
     width: fit-content;
 }   
 #socials--list a:hover {
-    background-color: #e3d6ff;
-    color: #7c3aed; 
-    border-color: #7c3aed;
+    background-color: #f6dbe1;
+    color: #9c2148;
+    border-color: #9c2148;
 }
 #qualifications--list{
     list-style: circle;
 }
 #certification--list{
+    color: var(--mainTextColor);
     list-style: circle;
      font-size: 1em;
     line-height: 1em;
+}
+#certifications--list a:hover {
+    color: var(--mainLinkColor)
 }
 #wrapper--techstack_items{
     display: flex;
@@ -143,14 +147,14 @@ li{
     font-size: 0.9em;
 }
 .card--techstack{
-     display: flex;
+    display: flex;
     align-items: center;
     gap: 10px;
     padding: 12px 16px;
     background-color: var(--mainButtonColor);
     border: 2px solid var(--mainLinkColor); 
     border-radius: 8px;
-    color: #a259ff; 
+    color: #9c2148; 
     font-size: 1.2rem;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -167,7 +171,28 @@ li{
     background-color: var(--mainBorderColor);
     height: 1px;
 }
+#darkModeToggle {
+    position:relative;
+    top: 1em;
+    right: 1em;
+    padding: 8px 8px;
+    background-color: var(--mainButtonColor);
+    color: var(--mainTextColor);
+    border: 2px solid var(--mainLinkColor);
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 999;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
+#darkModeToggle:hover {
+    background-color: var(--mainLinkColor);
+    color: #ffffff;
+}
 @media(max-width:600px){
     #wrapper--hero{
         flex-direction: column;
@@ -202,23 +227,5 @@ li{
     margin-top: 0.5em;
     color: var(--mainLinkColor);
     font-weight: bold;
-}
-
-#darkModeToggle {
-    position: fixed;
-    top: 1em;
-    right: 1em;
-    padding: 0.5em 1em;
-    background-color: var(--mainLinkColor);
-    color: #bd63ee;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    z-index: 999;
-    font-size: 1rem;
-}
-
-#darkModeToggle:hover {
-    background-color: #4b0bb9;
 }
 }
